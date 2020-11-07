@@ -37,8 +37,57 @@
 			<scope>test</scope>
 		</dependency>
 		
+		 <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+		 </dependency>
+		 
+		 <dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-autoconfigure</artifactId>
+		</dependency>
+
+		 <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+		 </dependency>
+
+		<!-- template Thymeleaf-->
+		 <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
 		
-		
+		<!-- Tomcat embedded container-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+ 
+		<!-- JSTL for JSP -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+
+		<!-- Need this to compile JSP -->
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Need this to compile JSP,
+			tomcat-embed-jasper version is not working, no idea why -->
+		<dependency>
+			<groupId>org.eclipse.jdt.core.compiler</groupId>
+			<artifactId>ecj</artifactId>
+			<version>4.6.1</version>
+			<scope>provided</scope>
+		</dependency>
+
 		<!-- Optional, test for static content, bootstrap CSS-->
 		<dependency>
 			<groupId>org.webjars</groupId>
@@ -57,7 +106,27 @@
 		    <artifactId>popper.js</artifactId>
 		    <version>1.14.4</version>
 		</dependency>
+		
+		 <!-- Spring data JPA, default tomcat pool, exclude it -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.tomcat</groupId>
+                    <artifactId>tomcat-jdbc</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
+        <!-- Oracle JDBC driver -->
+<!--         <dependency> -->
+<!--             <groupId>com.oracle</groupId> -->
+<!--             <artifactId>ojdbc7</artifactId> -->
+<!--             <version>12.1.0</version> -->
+<!--         </dependency> -->
+
+        <!-- PostgreSQL JDBC driver -->
 			<dependency>
 			            <groupId>org.postgresql</groupId>
 			            <artifactId>postgresql</artifactId>
@@ -66,6 +135,11 @@
 			</dependency>
 		
         <!-- HikariCP connection pool -->
+<!--         <dependency> -->
+<!--             <groupId>com.zaxxer</groupId> -->
+<!--             <artifactId>HikariCP</artifactId> -->
+<!--             <version>2.6.0</version>$NO-MVN-MAN-VER$ -->
+<!--         </dependency> --> 
        <dependency>
 	        <groupId>com.zaxxer</groupId>
 	        <artifactId>HikariCP</artifactId>
@@ -77,8 +151,15 @@
 		    <artifactId>javassist</artifactId>
 		    <version>3.23.1-GA</version>
 		</dependency>
-		
-		
+        
+<!--    JDK 9/10 only :::: JAX-B APIs as a maven dependency Proper long-term solution: (All JDK versions) -->
+    <dependency>
+        <groupId>javax.xml.bind</groupId>
+        <artifactId>jaxb-api</artifactId>
+        <version>2.3.0</version>
+    </dependency>
+ <!--  JDK 9/10 only :::: JAX-B APIs as a maven dependency Proper long-term solution: (All JDK versions) -->
+        
 	</dependencies>
 
 	<build>
